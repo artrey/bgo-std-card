@@ -52,4 +52,7 @@ func main() {
 		CancelFor: defaultCard.Transactions[0],
 	})
 	fmt.Println(card.SumByMCC(defaultCard.Transactions, []card.MCC{"5411", "5812"}))
+
+	fmt.Println(card.TranslateMCC(defaultCard.Transactions[0].MCC))
+	fmt.Println(card.TranslateMCC("1154"))
 }
