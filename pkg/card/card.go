@@ -41,3 +41,17 @@ func SumByMCC(transactions []*Transaction, mcc []MCC) int64 {
 	}
 	return result
 }
+
+func LastNTransactions(card *Card, n int) []*Transaction {
+	transactionsCount := len(card.Transactions)
+
+	if n > transactionsCount {
+		n = transactionsCount
+	}
+
+	result := make([]*Transaction, 0, n)
+	for i := transactionsCount - 1; i >= transactionsCount - n; i-- {
+		result = append(result, card.Transactions[i])
+	}
+	return result
+}
