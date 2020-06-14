@@ -52,4 +52,9 @@ func main() {
 
 	fmt.Println(card.TranslateMCC(defaultCard.Transactions[0].MCC))
 	fmt.Println(card.TranslateMCC("1154"))
+
+	fmt.Println(defaultCard)
+	fmt.Println(card.LastNTransactions(&defaultCard, 3))
+	fmt.Println(card.LastNTransactions(&defaultCard, 10))
+	fmt.Println(defaultCard)
 }
