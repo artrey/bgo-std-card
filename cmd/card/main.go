@@ -17,25 +17,23 @@ func main() {
 			{
 				Id:        253,
 				Sum:       1_203_91,
-				Timestamp: 1592173658,
+				Timestamp: 1610181644,
 				MCC:       "5812",
 				Status:    "completed",
-				Type:      "spending",
 			},
 			{
 				Id:        289,
 				Sum:       2000_00,
-				Timestamp: 1592174658,
+				Timestamp: 1610181698,
+				MCC:       "5912",
 				Status:    "completed",
-				Type:      "income",
 			},
 			{
 				Id:        411,
 				Sum:       735_55,
-				Timestamp: 1592183658,
+				Timestamp: 1610181944,
 				MCC:       "5411",
 				Status:    "in progress",
-				Type:      "spending",
 			},
 		},
 	}
@@ -45,11 +43,10 @@ func main() {
 
 	card.AddTransaction(&defaultCard, &card.Transaction{
 		Id:        487,
-		Sum:       1_203_91,
-		Timestamp: 1592183958,
+		Sum:       1_105_00,
+		Timestamp: 1610181990,
+		MCC:       "5812",
 		Status:    "in progress",
-		Type:      "income",
-		CancelFor: defaultCard.Transactions[0],
 	})
 	fmt.Println(card.SumByMCC(defaultCard.Transactions, []card.MCC{"5411", "5812"}))
 }

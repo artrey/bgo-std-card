@@ -17,9 +17,7 @@ type Transaction struct {
 	Sum       int64
 	Timestamp int64
 	MCC       MCC
-	Status    string       // in progress / completed
-	Type      string       // spending / income
-	CancelFor *Transaction // cancelled transaction, nil - for normal transaction
+	Status    string // in progress / completed / cancelled
 }
 
 func AddTransaction(card *Card, transaction *Transaction) {
@@ -29,11 +27,7 @@ func AddTransaction(card *Card, transaction *Transaction) {
 func SumByMCC(transactions []*Transaction, mcc []MCC) int64 {
 	subsumsByMCC := make(map[MCC]int64)
 	for _, transaction := range transactions {
-		if transaction.CancelFor == nil {
-			subsumsByMCC[transaction.MCC] += transaction.Sum
-		} else {
-			subsumsByMCC[transaction.CancelFor.MCC] -= transaction.Sum
-		}
+		subsumsByMCC[transaction.MCC] += transaction.Sum
 	}
 	result := int64(0)
 	for _, MCC := range mcc {
