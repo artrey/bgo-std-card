@@ -49,4 +49,9 @@ func main() {
 		Status:    "in progress",
 	})
 	fmt.Println(card.SumByMCC(defaultCard.Transactions, []card.MCC{"5411", "5812"}))
+
+	fmt.Println(defaultCard)
+	fmt.Println(card.LastNTransactions(&defaultCard, 3))
+	fmt.Println(card.LastNTransactions(&defaultCard, 10))
+	fmt.Println(defaultCard)
 }
